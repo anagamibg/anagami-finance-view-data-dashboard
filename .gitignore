@@ -1,0 +1,22 @@
+# dependencies and build output
+/vendor/
+/node_modules/
+/public/hot
+/public/js/databackd-charts.js
+
+# environment and secrets
+.env
+.env.*
+*.pem
+*.key
+
+# OS / IDE
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+# logs and temporary files
+*.log
+/storage/logs/
+/tmp/
