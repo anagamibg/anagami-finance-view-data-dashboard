@@ -1,0 +1,67 @@
+<?php
+
+return [
+    'menu' => 'Financial Dashboard',
+    'title' => 'Financial Dashboard',
+    'subtitle' => 'Key figures and charts in real time from the financial entries.',
+
+    'refresh' => 'Refresh',
+    'data_as_of' => 'Data as of',
+    'compared_with' => 'Compared with :from – :to',
+    'no_comparison' => 'No comparison',
+    'vs_previous' => 'vs. the previous period',
+    'vs_last_year' => 'vs. the same period last year',
+    'pp' => 'pp',
+    'expenses_not_split' => 'Expenses are not allocated to regions, segments, product groups or clients - with such a filter they are left out of the figures.',
+    'revenue_not_split' => 'Revenue is not allocated to cost centers - with such a filter it is left out of the figures.',
+    'compare_partial' => 'The data starts on :date, so the previous period is only partly covered - the changes in revenue, expenses and profit may look larger than they are.',
+    'period_empty' => 'There are no financial entries for the selected period.',
+    'period_empty_action' => 'Show the last 12 months',
+    'period_empty_filtered' => 'There are no financial entries for the selected period and filters.',
+    'period_empty_clear' => 'Clear the filters',
+    'empty' => [
+        'title' => 'No Financial Data Yet',
+        'text' => 'The dashboard fills in automatically from the financial entries. Import them from Excel or CSV, enter them manually or go through the setup wizard.',
+        'import' => 'Import data',
+        'manual' => 'Enter manually',
+        'setup' => 'Setup wizard',
+    ],
+    'balance_note' => 'Cash, receivables and payables are balances at the end of the period and only follow the selected legal entities.',
+
+    'kpi' => [
+        'revenue' => 'Revenue',
+        'expense' => 'Expenses',
+        'profit' => 'Profit',
+        'margin' => 'Profit margin',
+        'cash' => 'Cash',
+        'receivables' => 'Receivables from customers',
+        'payables' => 'Payables to suppliers',
+        'cash_info' => 'Balance of accounts 501–504 (cash on hand and bank accounts) with their analytic accounts at the end of the period.',
+        'receivables_info' => 'Balance of account 411 (Customers) with its analytic accounts at the end of the period.',
+        'payables_info' => 'Balance of account 401 (Suppliers) at the end of the period.',
+        'margin_info' => 'Profit / revenue, in percent. The change is in percentage points.',
+    ],
+
+    'charts' => [
+        'periods' => 'Revenue, expenses and profit by period',
+        'product_groups' => 'Revenue by product group',
+        'regions' => 'Revenue by region',
+        'segments' => 'Revenue by customer segment',
+        'expenses' => 'Expenses by type',
+        'counterparties' => 'Top 10 counterparties by turnover',
+        'cashflow' => 'Cash flow by month',
+        'cashflow_net' => 'Net cash flow (change of cash balance)',
+        'cashflow_balance' => 'Cash balance at month end',
+        'cashflow_note' => 'Net cash flow is the change of the balance of accounts 501 + 503 over the month.',
+        'revenue' => 'Revenue',
+        'expense' => 'Expenses',
+        'profit' => 'Profit',
+    ],
+
+    'counterparties' => [
+        'name' => 'Counterparty',
+        'revenue' => 'Revenue',
+        'expense' => 'Expenses',
+        'turnover' => 'Turnover',
+    ],
+];
