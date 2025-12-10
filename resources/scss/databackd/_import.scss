@@ -1,0 +1,91 @@
+// AFV (S12 / A08): import wizard, Google Sheets sources, import history - additions on top of _data.scss
+
+// drag & drop: dropify has no drag state of its own - the wizard toggles .is-dragover while a file is held over the zone
+.dbk-data-dropzone .dropify-wrapper.is-dragover {
+    border-color: var(--dbk-accent);
+    border-style: solid;
+    background-color: var(--dbk-accent-soft);
+
+    .dropify-message .file-icon { transform: translateY(-4px); }
+}
+
+.dbk-data-dropzone .dropify-wrapper.has-error {
+    border-color: var(--dbk-bad);
+    background-color: var(--dbk-bad-soft);
+}
+
+.dbk-data-dropzone .dropify-message .file-icon { transition: transform 0.15s ease; }
+
+// "rows with errors" heading + download button
+.fin-import-errors-head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--dbk-space-2);
+    margin-top: var(--dbk-space-4);
+
+    .dbk-data-subhead { margin: 0; }
+}
+
+// "already imported" warnings (same file / matching entries)
+.fin-import-duplicate {
+    a { text-decoration: underline; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .dbk-data-dropzone .dropify-message .file-icon { transition: none; }
+}
+
+@media (max-width: 575px) {
+    .fin-import-errors-head .btn { width: 100%; }
+
+    // column mapping on a phone: one card per column (name + samples, the field select full width) instead of a
+    // table whose select column is scrolled out of view
+    .fin-import-mapping .dbk-table-wrap:has(.fin-map-table) { overflow-x: visible; }
+
+    .fin-import-mapping .fin-map-table {
+        display: block;
+
+        thead { display: none; }
+        tbody { display: block; }
+
+        .fin-map-row {
+            display: grid;
+            grid-template-columns: 28px 1fr;
+            column-gap: var(--dbk-space-2);
+            padding: var(--dbk-space-2) var(--dbk-space-3);
+            border-bottom: 1px solid var(--dbk-border);
+
+            > td { display: block; padding: 2px 0; border: 0; min-width: 0 !important; background: transparent; }
+            > td:nth-child(1) { grid-row: 1 / span 3; }
+            > td:nth-child(3) { white-space: normal; }
+            > td:last-child { padding-top: var(--dbk-space-1); }
+            > td:last-child .form-control { width: 100%; height: 40px; }
+
+            &.is-mapped { background: var(--dbk-good-soft); }
+        }
+
+        .fin-map-sample { max-width: 100%; }
+    }
+    // saved sources on a phone: one block per source, so "Synchronize now" is not scrolled out of view
+    .dbk-data-sources .dbk-table-wrap:has(.src-table) { overflow-x: visible; }
+
+    .dbk-data-sources .src-table {
+        display: block;
+
+        thead { display: none; }
+        tbody { display: block; }
+
+        tr {
+            display: block;
+            padding: var(--dbk-space-3) var(--dbk-space-4);
+            border-bottom: 1px solid var(--dbk-border);
+        }
+
+        td { display: block; padding: 2px 0 !important; border: 0 !important; text-align: left !important; }
+        td:last-child { padding-top: var(--dbk-space-2) !important; }
+        td:last-child .btn { min-height: 40px; }
+        td:last-child .delete-form .btn { min-width: 40px; }
+    }
+}

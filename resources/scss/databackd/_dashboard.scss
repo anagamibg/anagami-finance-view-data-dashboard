@@ -1,0 +1,141 @@
+// AFV UI package partial: dashboard (S9). Owned by one package agent; compiled by S9.
+// P3 — financial dashboard (databackd/reports/dashboard) + AFV main dashboards (dashboard/**).
+
+// ---------------------------------------------------------------- financial dashboard
+.dbk-dash {
+    .dbk-page-actions {
+        align-items: center;
+        gap: var(--dbk-space-3);
+    }
+
+    .dbk-dash-asof {
+        font-size: var(--dbk-fs-sm);
+        color: var(--dbk-text-muted);
+        white-space: nowrap;
+
+        strong { color: var(--dbk-text-2); font-weight: 600; }
+    }
+
+    .dbk-dash-note {
+        font-size: var(--dbk-fs-xs);
+        color: var(--dbk-text-muted);
+        margin: calc(-1 * var(--dbk-space-1)) 0 var(--dbk-space-4);
+    }
+
+    .dbk-dash-chart-label {
+        font-size: var(--dbk-fs-xs);
+        font-weight: 600;
+        color: var(--dbk-text-2);
+        margin: 0 0 var(--dbk-space-1);
+    }
+
+    .dbk-dash-rank { width: 48px; }
+    .dbk-dash-share { width: 22%; min-width: 120px; }
+    .dbk-dash-cp-name { font-weight: 500; color: var(--dbk-text); min-width: 180px; }
+
+    // the card grid is a CSS grid → cards fill the row height
+    .dbk-grid > .dbk-card { margin-bottom: 0; }
+
+    // "no records for this period" line above the KPIs
+    .dbk-dash-period-empty {
+        font-size: var(--dbk-fs-sm);
+        color: var(--dbk-text-2);
+        background: var(--dbk-surface-2);
+        border: 1px solid var(--dbk-border);
+        border-radius: var(--dbk-radius-sm);
+        padding: var(--dbk-space-2) var(--dbk-space-3);
+    }
+
+    // actions of the empty state (company without any records)
+    .dbk-dash-empty-actions {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: var(--dbk-space-2);
+        margin-top: var(--dbk-space-3);
+
+        .btn { text-transform: none; }
+    }
+
+    @media (max-width: 767.98px) {
+        .dbk-dash-asof { white-space: normal; }
+    }
+}
+
+// ---------------------------------------------------------------- AFV main dashboards (admin / advanced / employee / client)
+// Cards and x-cards.widget are styled globally by the layout package (.dbk-layout-*); here only the dashboard-specific
+// multi-value stat cards (".dbk-dash-stat": e.g. invoices paid / unpaid, tasks pending / overdue) and chart cards.
+.dbk-ws-dash {
+    .dbk-dash-stat {
+        gap: var(--dbk-space-3);
+        align-items: flex-start !important;
+        padding: var(--dbk-space-4) var(--dbk-space-5) !important;
+        height: 100%;
+
+        h5 {
+            font-size: var(--dbk-fs-sm) !important;
+            line-height: 18px;
+            font-weight: 500 !important;
+            color: var(--dbk-text-muted) !important;
+            margin-bottom: var(--dbk-space-2) !important;
+        }
+
+        > .d-block:first-child { min-width: 0; }
+
+        .d-flex { flex-wrap: wrap; gap: var(--dbk-space-1) var(--dbk-space-6); }
+        .d-flex > a, .d-flex > p { min-width: 0; }
+
+        // values: text colour (not the brand accent); "overdue / unpaid" stays red as the bad state
+        p.font-weight-bold {
+            margin-right: 0 !important;
+            font-size: var(--dbk-fs-xl) !important;
+            line-height: 28px;
+            font-weight: 600 !important;
+            color: var(--dbk-text) !important;
+            font-variant-numeric: tabular-nums;
+            white-space: nowrap;
+
+            &.text-red { color: var(--dbk-bad) !important; }
+
+            > span {
+                font-size: var(--dbk-fs-xs) !important;
+                line-height: 16px;
+                font-weight: 400 !important;
+                color: var(--dbk-text-muted) !important;
+                white-space: normal;
+            }
+        }
+
+        // the round icon on the right; a card with a single block (e.g. the weekly time log) has no icon
+        > .d-block:last-child:not(:first-child) {
+            flex-shrink: 0;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--dbk-neutral-soft);
+            display: inline-flex !important;
+            align-items: center;
+            justify-content: center;
+            align-self: flex-start;
+
+            i { font-size: 16px !important; color: var(--dbk-text-muted) !important; }
+        }
+
+        @media (max-width: 575.98px) {
+            padding: var(--dbk-space-3) var(--dbk-space-4) !important;
+            p.font-weight-bold { font-size: 18px !important; line-height: 24px; }
+        }
+    }
+
+    // widget rows: equal height cards in a row (x-cards.widget is wrapped in <a>)
+    .row > [class*="col-"] > a > .dbk-layout-widget { height: 100%; }
+    .row > [class*="col-"] > a:only-child { display: block; height: 100%; }
+
+    // charts inside x-cards.data
+    .dbk-layout-card .dbk-chart { margin-top: var(--dbk-space-2); }
+}
+
+// balances row: 3 KPIs → on 2-column breakpoints the last one spans the full row
+@media (max-width: 1199.98px) {
+    .dbk-dash .dbk-dash-kpi-balances > .dbk-kpi:last-child:nth-child(odd) { grid-column: span 2; }
+}
